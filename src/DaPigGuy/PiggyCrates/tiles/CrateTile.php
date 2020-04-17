@@ -136,7 +136,7 @@ class CrateTile extends Chest
             if ($slot >= 53) return; // Maximum supported preview items is 54, meaning lowest chances are not shown.
             $item = clone $crateItem->item;
             $item->setCustomName(TextFormat::RESET . TextFormat::GREEN . $crateItem->getItem()->getCount() . "x " . TextFormat::RESET . $item->getName());
-            $item->setLore([TextFormat::RESET, TextFormat::RESET . TextFormat::GOLD . "Chance: " . round(($crateItem->chance / $chances) * 100, 2, PHP_ROUND_HALF_UP) . "%"]);
+            $item->setLore([TextFormat::RESET, TextFormat::RESET . $item->getLore()) . TextFormat::GOLD . "Chance: " . round(($crateItem->chance / $chances) * 100, 2, PHP_ROUND_HALF_UP) . "%"]);
             $this->menu->getInventory()->setItem($slot, $item);
             $slot++;
         }
